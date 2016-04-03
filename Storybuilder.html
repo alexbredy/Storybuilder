@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" media="screen" type="text/css" title="design" href="CSS/jquery-ui-1.8.21.custom.css" />
+        <link rel="stylesheet" media="screen" type="text/css" title="design" href="CSS/jquery.Jcrop.css" />
+        <link rel="stylesheet" media="screen" type="text/css" title="design" href="CSS/style.css" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <title>Storybuilder</title>
+
+    </head>
+    <body>
+        <section id="main_container">
+            <section id="left" class="hidden">
+                <div id="leftContainer">
+                    <ul id="resourcesContainer">
+                        <li class="resourceBlock">
+                            <div class="resourceHeader">
+                                <span>Backgrounds</span>
+                            </div>
+                            <div id="manualBackgrounds" class="resourceListContainer dropArea">
+                                <ul class="resourceList">
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="resourceBlock">
+                            <div class="resourceHeader">
+                                <span>Layers</span>
+                            </div>
+                            <div id="autoLayers" class="resourceListContainer dropArea">
+                                <ul class="resourceList">
+
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="resourceBlock">
+                            <div class="resourceHeader">
+                                <span>Audio</span>
+                            </div>
+                            <div id="autoAudio" class="resourceListContainer dropArea">
+                                <ul class="resourceList">
+
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="resourceBlock">
+                            <div class="resourceHeader">
+                                <span>Video</span>
+                            </div>
+                            <div id="autoVideo" class="resourceListContainer dropArea">
+                                <ul class="resourceList">
+
+                                </ul>
+                            </div>
+                        </li>
+                        <!--<li class="resourceBlock">
+                            <div class="resourceHeader">
+                                <span>Animation</span>
+                            </div>
+                            <div id="autoAnimation" class="resourceListContainer dropArea">
+                                <ul class="resourceList">
+
+                                </ul>
+                            </div>
+                        </li>-->
+                    </ul>
+                </div>
+            </section>
+            <section id="right" class="hidden">
+
+                <div id="right_container">
+                    <div id="canvasDropArea" class="dropArea">
+                        <div id="canvasContainer">
+                            <div id="selectArea"></div>
+                            <div id="zoomArea" data-zoom="zoomin"></div>
+                            <div id="canvasArea"></div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </section>
+
+            <section id="bottom" class="dropArea hidden">
+                <div id="bottom_container">
+
+                    <div id="timeSpace">
+                        <span id="manualTab" class="timeMarkerTab">
+                            <a data-timeline="manual">
+                                Static
+                            </a>
+                        </span>
+                        <span id="autoTab" class="timeMarkerTab clickableTab">
+                            <a data-timeline="auto">
+                                Dynamic
+                            </a>
+                        </span>
+                        <div id="manualTabContent">
+                            <p>Pages: <span class="pageCounter">1</span><br/>
+                                Current page: <span class="currentPage">1</span><br/>
+                                Frames: <span id="framesCounter">0</span><br/></p>
+                        </div>
+                        <div id="autoTabContent" class="hidden">
+                            <p>Hovered time: <span class="timeHover">1</span> s<br/>
+                                <span class="trackName">No track</span><br/>
+                                Time: <span class="trackTime" id="time_hover">0.0</span>s<br/>
+                                Duration: <span class="trackDuration">0.0</span>s<br/></p>
+                            <div style="margin-top: 5px;">
+                                <button id="playButton" type="button">Play/Pause</button>
+                                <button id="stopButton" type="button">Stop</button>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div id="scrollableTimeline">
+                        <div id="manualTimeline">
+                            <div id="manualTimelineContent">
+                            </div>
+                        </div>
+                        <div id="autoTimeline" class="hidden">
+                            <div id="audioTimeline">
+                            </div>
+                            <ul id="framesTimelineContainer">
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+            <section id="top">
+                <div id="top_container">
+                    <nav>
+                        <ul id="menu">
+                            <li class="menu_item">
+                                <div class="menu_item_header">
+                                    <span>File</span>
+                                </div>
+                                <div class="menu_item_content">
+                                    <ul class="menu_list">
+                                        <li class="menu_list_item" data-action="1">
+                                            <a>
+                                                <span>New Story</span>
+                                            </a>
+                                        </li>
+
+                                        <li class="menu_list_item disabled" data-action="2">
+                                            <a>
+                                                <span>New Page</span>
+                                            </a>
+                                        </li>
+                                        <li class="menu_list_separator"></li>
+                                        <li class="menu_list_item" data-action="3">
+                                            <a>
+                                                <span>Open</span>
+                                            </a>
+                                        </li>
+                                        <li class="menu_list_separator"></li>
+                                        <li class="menu_list_item disabled" data-action="4">
+                                            <a>
+                                                <span>Save</span>
+                                            </a>
+                                        </li>
+                                        <li class="menu_list_item disabled" data-action="5">
+                                            <a>
+                                                <span>Export Project</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li><li class="menu_item">
+                                <div class="menu_item_header">
+                                    <span>Edit</span>
+                                </div>
+                                <div class="menu_item_content">
+                                    <ul class="menu_list">
+                                        <li class="menu_list_item disabled" data-action="6">
+                                            <a>
+                                                <span>Undo</span>
+                                            </a>
+                                        </li>
+                                        <li class="menu_list_item disabled" data-action="7">
+                                            <a>
+                                                <span>Redo</span>
+                                            </a>
+                                        </li>
+                                        <li class="menu_list_item disabled" data-action="TBA">
+                                            <a>
+                                                <span>Not for this version</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li><li class="menu_item">
+                                <div class="menu_item_header">
+                                    <span>Story</span>
+                                </div>
+                                <div class="menu_item_content">
+                                    <ul class="menu_list">
+                                        <li class="menu_list_item disabled" data-action="TBA">
+                                            <a>
+                                                <span>Play</span>
+                                            </a>
+                                        </li>
+                                        <li class="menu_list_item disabled" data-action="8">
+                                            <a>
+                                                <span>Edit Info</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li><li class="menu_item">
+                                <div class="menu_item_header">
+                                    <span>Page</span>
+                                </div>
+                                <div class="menu_item_content">
+                                    <ul class="menu_list">
+                                        <li class="menu_list_item disabled" data-action="TBA">
+                                            <a>
+                                                <span>Events</span>
+                                            </a>
+                                        </li>
+                                        <li class="menu_list_item disabled" data-action="TBA">
+                                            <a>
+                                                <span>Frames</span>
+                                            </a>
+                                        </li>
+                                        <li class="menu_list_item disabled" data-action="TBA">
+                                            <a>
+                                                <span>Delete</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li><li class="menu_item">
+                                <div class="menu_item_header">
+                                    <span>Layer</span>
+                                </div>
+                                <div class="menu_item_content">
+                                    <ul class="menu_list">
+                                        <li class="menu_list_item disabled" data-action="TBA">
+                                            <a>
+                                                <span>Delete</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li><li class="menu_item">
+                                <div class="menu_item_header">
+                                    <span>Frame</span>
+                                </div>
+                                <div class="menu_item_content">
+                                    <ul class="menu_list">
+                                        <li class="menu_list_item disabled" data-action="TBA">
+                                            <a>
+                                                <span>Toggle Mode</span>
+                                            </a>
+                                        </li>
+                                        <li class="menu_list_item disabled" data-action="TBA">
+                                            <a>
+                                                <span>Delete</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li><li class="menu_item">
+                                <div class="menu_item_header">
+                                    <span>Timeline</span>
+                                </div>
+                                <div class="menu_item_content">
+                                    <ul class="menu_list">
+                                        <li class="menu_list_item disabled" data-action="TBA">
+                                            <a>
+                                                <span>Static Timeline</span>
+                                            </a>
+                                        </li>
+                                        <li class="menu_list_item disabled" data-action="TBA">
+                                            <a>
+                                                <span>Dynamic Timeline</span>
+                                            </a>
+                                        </li>
+                                        <li class="menu_list_separator"></li>
+                                        <li class="menu_list_item disabled" data-action="TBA">
+
+                                            <a>
+                                                <span>Play</span>
+                                            </a>
+                                        </li>
+                                        <li class="menu_list_item disabled" data-action="TBA">
+
+                                            <a>
+                                                <span>Pause</span>
+                                            </a>
+                                        </li>
+                                        <li class="menu_list_item disabled" data-action="TBA">
+
+                                            <a>
+                                                <span>Stop</span>
+                                            </a>
+                                        </li>
+                                        <li class="menu_list_item disabled" data-action="TBA">
+
+                                            <a>
+                                                <span>Remove Audio Track</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li><li class="menu_item">
+                                <div class="menu_item_header">
+                                    <span>?</span>
+                                </div>
+                                <div class="menu_item_content">
+                                    <ul class="menu_list">
+                                        <li class="menu_list_item" data-action="9">
+                                            <a>
+                                                <span>Help</span>
+                                            </a>
+                                        </li>
+                                        <li class="menu_list_separator"></li>
+                                        <li class="menu_list_item" data-action="10">
+                                            <a>
+                                                <span>About</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+
+            </section>
+
+        </section>
+        <div id="toolbar" class="hidden">
+            <div id="toolbarHeader">
+                <span style="font-size: 12px; color: white;">Toolbar - <span class="canvasMode">Page mode</span></span>
+            </div>
+
+            <div id="tabs">
+                <ul>
+                    <li style="font-size: 12px;"><a href="#tools">Tools</a></li>
+                    <li style="font-size: 12px;"><a href="#frames">Frames</a></li>
+                    <li style="font-size: 12px;"><a href="#layers">Layers</a></li>
+                </ul>
+                <div id="tools">
+                    <ul id="toolList">
+                        <li class="tool">
+                            <a class="activeTool" data-tool="cursor">
+                                Drag cursor
+                            </a>
+                        </li>
+                        <li class="tool">
+                            <a data-tool="select">
+                                Select tool
+                            </a>
+                        </li>
+                        <li class="tool">
+                            <a data-tool="zoomin">
+                                Zoom in
+                            </a>
+                        </li>
+                        <li class="tool">
+                            <a data-tool="zoomout">
+                                Zoom out
+                            </a>
+                        </li>
+                    </ul>
+                    <div id="currentToolInfo">
+                        <div id="cursorInfo">
+                            <p>
+                                Cursor properties:<br/>
+                                Drag layers
+                            </p>
+                        </div>
+                        <div id="selectInfo">
+                            <ul class="selectCoordinates clearfix">
+                                <li>x: <span class="floatRight"><input type="text" name="selectX" maxlength="3" value="0"/>%</span></li>
+                                <li> y: <span class="floatRight"><input type="text" name="selectY" maxlength="3" value="0"/>%</span></li>
+                                <li>w: <span class="floatRight"><input type="text" name="selectWidth" maxlength="3" value="0"/>%</span></li>
+                                <li> h: <span class="floatRight"><input type="text" name="selectHeight" maxlength="3" value="0"/>%</span></li>
+                            </ul>
+                            <button id="createFrameButton" style="clear: both; margin: auto; display: block;" disabled="disabled" type="button">Create new frame</button>
+                        </div>
+                        <div id="zoomInfo">
+                            <p>
+                                Zoom:<br/>
+                                100%
+                            </p>
+                            <button id="resetZoomButton" style="clear: both; margin: auto; display: block;" type="button">Reset to 100%</button>
+                        </div>
+
+                    </div>
+
+                </div>
+                <div id="layers" class="clearfix">
+                    <div id="layerTools">
+                        <div id="layerToolsContainer">
+                            <ul id="layerToolsList" class="clearfix">
+                                <li class="clearfix">
+                                    <div class="floatLeft clearLeft">
+                                        <label>Opacity:</label>
+                                        <input id="opacityValue" class="editableValue" type="text" value="100"/>
+
+                                    </div>
+                                    <div id="opacitySlider" class="layerSlider"></div>
+                                </li>
+                                <li class="clearfix">
+                                    <div class="floatLeft clearLeft">
+                                        <label>Scaling:</label>
+                                        <input id="scalingValue" class="editableValue" type="text" value="100"/>
+
+                                    </div>
+                                    <div id="scalingSlider" class="layerSlider"></div>
+                                </li>
+                                <li class="clearfix">
+                                    <div class="floatLeft clearLeft">
+                                        <label>Rotation:</label>
+                                        <input id="rotationValue" class="editableValue" type="text" value="0"/>
+
+                                    </div>
+                                    <div id="rotationSlider" class="layerSlider"></div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <ul id="layerList">
+                    </ul>
+
+                </div>
+                <div id="frames">
+                    <div id="frameTools">
+                        <div id="frameToolsContainer" class="clearfix">
+                            <ul class="selectCoordinates frameCoordinates clearfix">
+                                <li>x: <span class="floatRight"><input type="text" name="selectX" maxlength="3" value="0"/>%</span></li>
+                                <li> y: <span class="floatRight"><input type="text" name="selectY" maxlength="3" value="0"/>%</span></li>
+                                <li>w: <span class="floatRight"><input type="text" name="selectWidth" maxlength="3" value="0"/>%</span></li>
+                                <li> h: <span class="floatRight"><input type="text" name="selectHeight" maxlength="3" value="0"/>%</span></li>
+                            </ul>
+                            <div id="frameToolsButtons" class="clearfix">
+                            <button id="saveSelectChangesButton" type="button" disabled="disabled">Save Changes</button>
+                            <button id="toggleModeButton" type="button" disabled="disabled">Toggle Mode</button>
+                            </div>
+                        </div>
+                    </div>
+                    <ul id="frameList">
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div id="toolbarArea"></div>
+        <script>
+            //document.title = 'Story Title';  
+        </script>
+        <script type="text/javascript" src="src/com/Storybuilder/External/JSON/cycle.js"></script>
+        <script type="text/javascript" src="src/com/Storybuilder/External/JSON/json2.js"></script>
+
+        <script type="text/javascript" src="src/com/Storybuilder/External/jquery-1.7.2.min.js"></script>
+        <script type="text/javascript" src="src/com/Storybuilder/External/jquery-ui-1.8.21.custom.min.js"></script>
+        <script type="text/javascript" src="src/com/Storybuilder/External/kinetic-v4.0.1.min.js"></script>
+        <script type="text/javascript" src="src/com/Storybuilder/External/jquery.color.js"></script>
+        <script type="text/javascript" src="src/com/Storybuilder/External/jquery.Jcrop.min.js"></script>
+        <script type="text/javascript" src="src/com/Storybuilder/External/Modernizr.js"></script>
+
+        <!--ALWAYS INCLUDE THIS FILE FIRST BEFORE THE OTHER APPLICATION FILES
+        DO NOT CHANGE THE ORDER OF THE FILES AS EACH OF THEM MAY REQUIRE THE PREVIOUS ONE AND SHOULD BE ALREADY INCLUDED-->
+        <script type="text/javascript" src="src/com/Storybuilder/Utility/Namespace.js"></script>
+
+
+        <script type="text/javascript" src="src/com/Storybuilder/ModelNS/Observable.js"></script>
+        <script type="text/javascript" src="src/com/Storybuilder/Application/Parameters.js"></script>
+        <script type="text/javascript" src="src/com/Storybuilder/ViewNS/DOM.js"></script>
+        <script type="text/javascript" src="src/com/Storybuilder/Utility/Rect.js"></script>
+        <script type="text/javascript" src="src/com/Storybuilder/Utility/MathLib.js"></script>
+        <script type="text/javascript" src="src/com/Storybuilder/ViewNS/Action.js"></script>
+        <script type="text/javascript" src="src/com/Storybuilder/ViewNS/AbstractInteractiveInterface.js"></script>
+        <script type="text/javascript" src="src/com/Storybuilder/ModelNS/AbstractSerializable.js"></script>
+        <script type="text/javascript" src="src/com/Storybuilder/ViewNS/AbstractViewModule.js"></script>
+        <script type="text/javascript" src="Application/Color.js"></script>
+        <script type="text/javascript" src="src/com/Storybuilder/ModelNS/Frame.js"></script>
+        <script type="text/javascript" src="src/com/Storybuilder/ViewNS/Dialogs.js"></script>
+        <script type="text/javascript" src="src/com/Storybuilder/ModelNS/IO.js"></script>
+        <script type="text/javascript" src="src/com/Storybuilder/ModelNS/Page.js"></script>
+        <script type="text/javascript" src="src/com/Storybuilder/ViewNS/Tools.js"></script>
+        <script type="text/javascript" src="src/com/Storybuilder/Utility/XMLGenerator.js"></script>
+        <script type="text/javascript" src="src/com/Storybuilder/ModelNS/CanvasModel.js"></script>
+        <script type="text/javascript" src="src/com/Storybuilder/ModelNS/ResourceManager.js"></script>
+        <script type="text/javascript" src="src/com/Storybuilder/ModelNS/Story.js"></script>
+        <script type="text/javascript" src="Application/Canvas.js"></script>
+        <script type="text/javascript" src="src/com/Storybuilder/ModelNS/Layer.js"></script>
+        <script type="text/javascript" src="src/com/Storybuilder/ViewNS/ViewClasses.js"></script>
+        <script type="text/javascript" src="src/com/Storybuilder/ModelNS/AbstractResource.js"></script>
+        <script type="text/javascript" src="src/com/Storybuilder/ModelNS/ImageResource.js"></script>
+        <script type="text/javascript" src="src/com/Storybuilder/ModelNS/AudioResource.js"></script>
+        <script type="text/javascript" src="src/com/Storybuilder/ModelNS/VideoResource.js"></script>
+        <script type="text/javascript" src="src/com/Storybuilder/ControllerNS/ResourceDropStrategy.js"></script>
+
+        <script type="text/javascript" src="src/com/Storybuilder/ViewNS/CanvasModule.js"></script>
+        <script type="text/javascript" src="src/com/Storybuilder/ViewNS/DialogsModule.js"></script>
+        <script type="text/javascript" src="src/com/Storybuilder/ViewNS/MenuModule.js"></script>
+        <script type="text/javascript" src="src/com/Storybuilder/ViewNS/PanelModule.js"></script>
+        <script type="text/javascript" src="src/com/Storybuilder/ViewNS/ResourceModule.js"></script>
+        <script type="text/javascript" src="src/com/Storybuilder/ViewNS/TimelineModule.js"></script>
+
+        <script type="text/javascript" src="src/com/Storybuilder/ViewNS/View.js"></script>
+        <script type="text/javascript" src="src/com/Storybuilder/ModelNS/Model.js"></script>
+        <script type="text/javascript" src="src/com/Storybuilder/ControllerNS/Controller.js"></script>
+
+        <!--ALWAYS INCLUDE THIS FILE LAST AFTER THE OTHER APPLICATION FILES-->
+        <script type="text/javascript" src="src/com/Storybuilder/Application/Bootstrap.js"></script>
+
+        <!--<script async src="loadResources.js" onload=""></script>-->
+
+    </body>
+</html>

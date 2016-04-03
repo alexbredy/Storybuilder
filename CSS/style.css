@@ -1,0 +1,1448 @@
+/* 
+    Document   : style
+    Created on : Jun 18, 2012, 9:37:18 PM
+    Author     : alexanderbredy
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+html, body{
+    height: 100%;
+    font-family: 'Lucida Grande', 'Arial';
+    /*cursor: -moz-zoom-in;
+    cursor: -moz-zoom-out;*/
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-size: 14px;
+    background-color: #AAAAAA;
+}
+
+#main_container{
+    width: 100%;
+    height: 100%;
+}
+
+#top{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: url("images/ui-bg_gloss-wave_75_2191c0_500x100.png") repeat-x scroll 50% 50% #2191C0;
+    min-height: 30px;
+    border: 1px solid black;
+    z-index: 6000;
+}
+
+#bottom{
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 85%;
+    height: 18%;
+    background-color: white;
+    border: 1px solid black;
+    z-index: 500;
+}
+
+#left{
+    position: fixed;
+    width: 15%;
+    height: 100%;
+    left: 0;
+    background-color: #063053;
+    background: -webkit-gradient(linear, center top, center bottom, from(#063053), color-stop(50%,#395873), to(#5C7C99));
+    background: -webkit-linear-gradient(#063053, #5C7C99);
+    background: -ms-linear-gradient(#063053, #5C7C99);
+    background: -o-linear-gradient(#063053, #5C7C99);
+    background: linear-gradient(#063053, #5C7C99);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#063053', endColorstr='#5C7C99');
+    background: -moz-linear-gradient(center top , #063053, #395873, #5C7C99);
+    zoom: 1;
+
+    top: 30px;
+}
+
+#right{
+    position: fixed;
+    right: 0;
+    width: 85%;
+    top: 30px;
+    height: 77%;
+    background-color: #AAAAAA;
+}
+
+#right.frameMode{
+    background-color: #666666;
+}
+
+#top_container{
+    width: 100%;
+    height: 100%;
+    padding-left: 10px;
+}
+
+#bottom_container{
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+#scrollableTimeline{
+    position: absolute;
+    left: 200px;
+    top: 0;
+    z-index: 30;
+    width: 100%;
+    background-color: transparent;
+    height: 100%;
+    border-left: 1px solid black;
+}
+
+#manualTimeline{
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 30;
+    width: 100%;
+
+    background-color: transparent;
+    height: 100%;
+    overflow-y: hidden;
+    overflow-x: scroll;
+    overflow: auto;
+}
+
+#autoTimeline{
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 30;
+    width: 100%;
+    background-color: transparent;
+    height: 100%;
+    overflow-y: hidden;
+    overflow-x: scroll;
+}
+
+#leftContainer{
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+#right_container{
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    overflow-y: auto;
+    overflow-x: auto;
+}
+
+#timeline{
+}
+
+#canvasContainer{
+    position: relative;
+    width: 640px;
+    display: block;
+    margin: auto;
+    height: 902px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+
+    -moz-box-shadow:  4px 4px 4px #222;
+    -webkit-box-shadow: 4px 4px 4px #222;
+    box-shadow: 4px 4px 8px #222;
+    /* For IE 8 */
+    -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#222222')";
+    /* For IE 5.5 - 7 */
+    filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#222222');
+
+}
+
+#canvasArea{
+    width: 640px;
+    height: 902px;
+    background-color: white;
+    position: absolute;
+    top: 0;
+    left: 0;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+#canvasDropArea{
+    vertical-align: middle;
+    margin: auto;
+    width: 640px;
+    height: 902px;
+    background-color: transparent;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+
+
+ul,li{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+
+}
+
+.button_link{
+    cursor: pointer;
+}
+
+.kineticjs-content canvas:hover{
+    /*cursor: pointer;*/
+}
+
+.kineticjs-content canvas:active{
+    /*cursor: pointer;*/
+}
+
+#toolbar{
+    min-width: 220px;
+    min-height: 220px;
+    position: absolute;
+    top: 50px;
+    left: 250px;
+    z-index: 5000;
+    background-color: white;
+
+    -moz-box-shadow:  4px 4px 4px #222;
+    -webkit-box-shadow: 4px 4px 4px #222;
+    box-shadow: 4px 4px 8px #222;
+    /* For IE 8 */
+    -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#222222')";
+    /* For IE 5.5 - 7 */
+    filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#222222');
+}
+
+#toolbarHeader{
+    width: 100%;
+    height: 18px;
+    background-color: blue;
+    cursor: pointer;
+}
+
+p{
+    margin: 0;
+    padding: 0;
+    font-size: 12px;
+    font-family: Verdana;
+}
+
+.menu_item{
+    display: inline-block;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+canvas{
+    background-color: transparent;
+    z-index: 300;
+}
+
+.menu_item_header{
+    height: 30px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.menu_item_header span{
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    vertical-align: middle;
+    padding-top: 10px;
+}
+
+.menu_item_header span:hover{
+    cursor: default;
+}
+
+.menu_item_content{
+    min-width: 20px; 
+    min-height: 20px; 
+    background-color: #FFFFFF; 
+    position: absolute; 
+    top: 30px;
+    display: none;
+
+    -moz-border-radius-bottomleft:5px;
+    -moz-border-radius-bottomright:5px;  
+    -khtml-border-radius-bottomleft: 5px;
+    -khtml-border-radius-bottomright: 5px;
+    -webkit-border-radius-bottomleft: 5px;
+    -webkit-border-radius-bottomright: 5px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.menu_item_content_activated{
+    display: block;
+}
+
+.resourceHeader{
+    width: 100%;
+    height: 20px;
+    background: url("images/ui-bg_gloss-wave_50_6eac2c_500x100.png") repeat-x scroll 50% 50% #6EAC2C;
+    border: 1px solid black;
+    cursor: pointer;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    white-space:nowrap;
+}
+
+.resourceListContainer{
+    width: 100%;
+    display: none;
+    background-color: white;
+
+}
+
+.resourceListContainer.dragOver, .resourceList.dragOver{
+    background-color: #CCCCCC;
+}
+
+.menu_list{
+    width: 100%;
+    padding-top: 2px;
+    padding-bottom: 5px;
+    border: 1px solid black;
+}
+
+.menu_list li{
+    display: block;
+}
+
+.menu_list_item{
+    cursor: default;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+.menu_list_item a{
+    padding-left: 20px;
+    padding-right: 80px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    display: block;
+    background-color: transparent;
+    color: #000000;
+}
+
+.menu_list_item a:hover{
+    background-color: #000077;
+    color: #FFFFFF;
+}
+
+.disabled a{
+    color: #999;
+    background-color: transparent;
+}
+
+.disabled a:hover{
+    color: #999;
+    background-color: transparent;
+}
+
+.menu_list_separator{
+    width: 100%;
+    height: 1px;
+    background-color: #CCC;
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+
+
+#toolbar .ui-tabs{
+    padding: 0;
+}
+
+#toolbar .ui-corner-all{
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+}
+
+#toolbar .ui-tabs-panel{
+    padding: 0;
+}
+
+.resourceList{
+    min-height: 200px;
+    background-color: transparent;
+}
+
+.resourceItem{
+    width: 100%;
+    height: 200px;
+    margin: auto;
+}
+
+.resourceItem img{
+    cursor: move;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+img.over, div.over {
+    border: 2px dashed #000;
+}
+
+#wrapper
+{
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    background-image: url("img/pixel.png");
+    overflow: scroll;
+    overflow-x: hidden;
+    z-index: 999999;
+}
+
+#wrapper_container
+{
+    max-width: 60%;
+    width: 450px;
+    margin: auto;
+    margin-top: 80px;
+    padding-bottom: 10px;
+    background-color: transparent;
+
+}
+
+#messageBoxWrapper
+{
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    background-image: url("img/pixel.png");
+    overflow: scroll;
+    overflow-x: hidden;
+    z-index: 1000000;
+}
+
+#messageContent{
+    padding: 5px;
+}
+
+#dialogHeader{
+    width: 100%;
+    background-color: #7777FF;
+    height: 20px;
+    padding: 5px;
+    color: #FFFFFF;
+    -moz-box-shadow:  4px 4px 4px #222;
+    -webkit-box-shadow: 4px 4px 4px #222;
+    box-shadow: 4px 4px 8px #222;
+    /* For IE 8 */
+    -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#222222')";
+    /* For IE 5.5 - 7 */
+    filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#222222');
+
+
+}
+
+#dialogHeader a{
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+#dialogHeader a:hover{
+    text-decoration: underline;
+}
+
+#dialogContent{
+    width: 100%;
+    padding: 5px;
+    -moz-box-shadow:  4px 4px 4px #222;
+    -webkit-box-shadow: 4px 4px 4px #222;
+    box-shadow: 4px 4px 8px #222;
+    /* For IE 8 */
+    -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#222222')";
+    /* For IE 5.5 - 7 */
+    filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#222222');
+}
+
+#newStoryDialog{
+    width: 450px;
+    margin: auto;
+
+}
+
+#dialogContent{
+    background-color: #DDDDDD;
+}
+
+.formTable{
+    padding-top: 20px;
+    width: 100%;
+}
+
+.formTable th{
+    text-align: left;
+    font-weight: lighter;
+    vertical-align: top;
+}
+
+.formTable td input{
+    text-align: left;
+}
+
+.formTable td .errorMessage{
+    text-align: left;
+}
+
+.formTable input[type=text]{
+    width: 100%;
+}
+
+
+.floatLeft{
+    float: left;
+}
+
+.floatRight{
+    float: right;
+}
+
+span.errorMessage{
+    color: #FF0000;
+    font-size: 11px;
+}
+
+.formTable .errorMessage{
+    float: left;
+}
+
+.helpMessage{
+    font-size: 11px;
+}
+
+.invisible{
+    visibility: hidden;
+}
+
+
+.hidden{
+    display: none;
+}
+
+.helpCell{
+    width: 30px;
+    text-align: right;
+    position: relative;
+    display: block;
+}
+
+.helpBubble{
+    position: absolute;
+    background-color: #FFFFFF;
+    border: 1px solid black;
+    padding: 3px;
+    font-size: 11px;
+    top:-12px;
+    left: 36px;
+    text-align: left;
+    white-space: nowrap;
+    display: none;
+}
+
+.helpBubbleMessage{
+    display: block;
+}
+
+#dialogContent textarea{
+    width: 100%;
+    resize: none;
+    padding: 3px;
+    height: 29px;
+    font-family: 'Lucida Grande', 'Arial';
+    font-size: 12px;
+}
+
+#timeSpace{
+    position: absolute;
+    z-index: 30;
+    width: 200px;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: black;
+    display: block;
+    color: #FFFFFF;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    cursor: default;
+
+}
+
+#manualTabContent{
+    position: absolute;
+    z-index: 30;
+    width: 150px;
+    height: 100%;
+    top: 18px;
+    left: 0;
+}
+
+#autoTabContent{
+    position: absolute;
+    z-index: 30;
+    width: 150px;
+    height: 100%;
+    top: 18px;
+    left: 0;
+}
+
+#timeSpace p{
+    font-size: 11px;
+}
+
+.mandatoryField{
+    font-weight: bold;
+}
+
+.timeMarkerTab{
+    width: 99px;
+    height: 18px;
+    background-color: #000000;
+    display: block;
+    color: #FFFFFF;
+    font-size: 12px;
+    float: left;
+    text-align: center;
+    font-weight: bold;
+    line-height: 18px;
+
+
+}
+
+.timeMarkerTab a{
+    cursor: default;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.clickableTab{
+    background-color: #999999;
+}
+
+.clickableTab a{
+    background-color: #999999;
+    cursor: pointer;
+    border-bottom: 1px solid #666666;
+    border-left: 1px solid #666666;
+}
+
+.clickableTab a:hover{
+    background-color: #AAAAAA;
+}
+
+.pageThumbnailContainer{
+    position: relative;
+    width: 120px;
+    height: 100%;
+    background-color: transparent;
+    float: left;
+}
+
+.pageThumbnailContainer a{
+    cursor: pointer;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.pageThumbnailContainer a.activePage{
+    cursor: pointer;
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-color: yellow;
+}
+
+.pageThumbnailContainer a:hover{
+    background-color: #CCCCCC;
+}
+
+.pageThumbnailWrapper{
+    border: 1px solid black;
+    position: absolute;
+    top: 10%;
+    left: 20%;
+    width: 60%;
+    height: 80%;
+    background-color: #FFFFFF;
+}
+
+.pageThumbnail{
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+#manualTimelineContent{
+    width: 0px; 
+    height: 100%; 
+    position: relative;
+}
+
+.resource{
+    white-space: nowrap;
+    width: 60%; 
+    height: 70%; 
+    position: absolute; 
+    top: 10%; 
+    left: 20%;
+    display: block;
+    border: 1px solid black;
+}
+
+.resourceItemWrapper{
+    width: 100%; 
+    height: 100%; 
+    position: relative;
+}
+
+.resourceItemWrapper a{
+    display: block;
+    width: 100%; 
+    background-color: transparent; 
+    height: 100%;
+}
+
+.resourceItemWrapper a:hover{
+    background-color: #CCC;
+}
+
+.redLine{
+    width: 2px;
+    height: 100%;
+    position: absolute;
+    background-color: red;
+    top: 0;
+    z-index: 99;
+    cursor: pointer;
+}
+
+.yellowLine{
+    width: 2px;
+    height: 100%;
+    position: absolute;
+    background-color: yellow;
+    top: 0;
+    z-index: 98;
+    cursor: pointer;
+}
+
+.blueLine{
+    width: 2px;
+    height: 100%;
+    position: absolute;
+    background-color: #77d5f7;
+    top: 0;
+    z-index: 97;
+    cursor: pointer;
+}
+
+#audioTimeline{
+    height: 25%;
+    width: 12000px;
+    background-color: #444444;
+    position: relative;
+    cursor: pointer;
+    color: white;
+    font-size: 11px;
+}
+
+.frameTimeline{
+    width: 200px;
+    height: 100%;
+    color: white;
+    display: block;
+    float: left;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    cursor: default;
+}
+
+.frameTimeline:nth-child(odd){
+    background-color: #6680FF;
+}
+
+.frameTimeline:nth-child(even){
+    background-color: #171F8A;
+}
+
+.frameTimeline a{
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.frameTimeline a:hover{
+}
+
+#framesTimelineContainer{
+    width: 12000px;
+    height: 75%;
+    position: absolute;
+    top: 25%;
+    background-color: transparent;
+    overflow-y: scroll;
+}
+
+.clearfix:after{
+    content: " ";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    height: 0;
+    font-size: 0;
+}
+
+.clearfix{
+    display: inline-block;    
+}
+
+/* Hides from IE-mac \*/
+* html .clearfix {
+    height: 1%;
+}
+.clearfix {
+    display: block;
+}
+
+.tool{
+    width: 99%;
+    display: block;
+    text-align: center;
+}
+
+.tool a.disabled{
+    color: #444444;
+    background-color: #DDDDDD;
+}
+
+.tool a.disabled:hover{
+    background-color: #DDDDDD;
+    cursor: default;
+}
+
+.tool a{
+    font-size: 14px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    width: 100%;
+    height: 100%;
+    display: block;
+    cursor: pointer;
+    border: 1px solid #EEEEEE;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+.tool a:hover{
+    background-color: yellow;
+}
+
+a.activeTool{
+    background-color: #000077;
+    color: white;
+}
+
+a.activeTool:hover{
+    background-color: #000077;
+    color: white;
+}
+
+#zoomArea{
+    width: 640px;
+    height: 902px;
+    background-color: transparent;
+    position: absolute;
+    top: 0;
+    left: 0;
+    cursor: -moz-zoom-in;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+#selectArea{
+    width: 640px;
+    height: 902px;
+    background-color: transparent;
+    position: absolute;
+    top: 0;
+    left: 0;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+#selectAreaDynamic{
+    width: 640px;
+    height: 902px;
+    background-color: white;
+    position: absolute;
+    top: 0;
+    left: 0;
+
+}
+
+#tabs{
+    min-height: 200px; 
+    display: none;
+    border: none;
+}
+
+#currentToolInfo{
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    font-size: 12px;
+    position: relative;
+    color: black;
+    background-color: #EEEEEE;
+}
+
+#currenToolInfo div{
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+
+#cursorInfo{
+    display: block;
+}
+
+#selectInfo{
+    display: none;
+}
+
+.selectCoordinates input{
+    width: 25px;
+    outline: none;
+    outline-width: 0;
+    border: 1px solid black;
+    padding: 1px;
+    margin-right: 2px;
+    margin-bottom: 4px;
+}
+
+.selectCoordinates label{
+    width: 40px;
+}
+
+#zoomInfo{
+    display: none;
+}
+
+.selectCoordinates{
+    width: 200px;
+    margin: auto;
+}
+
+.selectCoordinates li{
+    float: left;
+    display: block;
+    width: 90px;
+    margin-right: 10px;
+}
+
+#frameList{
+    width: 100%;
+    overflow: auto;
+    overflow-y: scroll;
+    height: 150px;
+}
+
+
+.frame{
+    border-bottom: 1px solid #000000;
+}
+
+#frames{
+}
+
+.frameContent{
+    padding: 0;
+}
+
+.frameThumbnailContainer{
+    float: left;
+    width: 26px;
+    height: 40px;
+    margin-right: 10px;
+    margin-left: 5px;
+    border: 1px solid black;
+    background-color: #DDDDDD;
+}
+
+.frameThumbnailContainer img{
+    display: block;
+    width: 100%;
+    height: 100%;
+    margin: -30px;
+}
+
+#frameTools{
+    width: 100%;
+    height: 80px;
+    background-color: #EEEEEE;
+}
+
+#frameTools button{
+    font-size: 12px;
+    display: block;
+    margin: auto;
+}
+
+#frameToolsContainer{
+    padding: 5px;
+}
+
+#frameTools label{
+    font-size: 11px;
+    float: left;
+}
+
+.frameCoordinates{
+    width: 200px;
+    margin: auto;
+    font-size: 12px;
+}
+
+.frameCoordinates li{
+    float: left;
+    display: block;
+    width: 90px;
+    margin-right: 10px;
+}
+
+.frameCoordinates li input{
+    width: 25px;
+    outline: none;
+    outline-width: 0;
+    border: 1px solid black;
+    padding: 1px;
+    margin-right: 2px;
+    margin-bottom: 4px;
+}
+
+#layerList{
+    width: 100%;
+    overflow: auto;
+    overflow-y: scroll;
+    height: 150px;
+
+}
+
+.layer{
+    border-bottom: 1px solid #000000;
+}
+
+.layerRight a{
+    padding: 5px;
+    display: block;
+    height: 40px;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.layerRight a.activeLayer{
+    background-color: #000077;
+    color: white;
+    font-weight: bold;
+}
+
+.layerRight a.activeLayer:hover{
+    background-color: #000077;
+    color: white;
+    font-weight: bold;
+}
+
+.activeLayer .layerThumbnailContainer{
+    border: 1px solid white;
+}
+
+.layerRight a:hover{
+    background-color: yellow;
+}
+
+#layers{
+}
+
+.layerContent{
+    padding: 0;
+}
+
+.layerThumbnailContainer{
+    float: left;
+    width: 26px;
+    height: 40px;
+    margin-right: 10px;
+    margin-left: 5px;
+    border: 1px solid black;
+}
+
+.layerThumbnailContainer img{
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+#layerTools{
+    width: 100%;
+    height: 75px;
+    background-color: #EEEEEE;
+}
+
+#layerToolsContainer{
+    padding: 5px;
+}
+
+#layerTools label{
+    font-size: 11px;
+    line-height: 22px;
+    margin-right: 4px;
+    width: 50px;
+    display: block;
+    float: left;
+}
+
+.layerSlider{
+    width: 50%;
+    height: 6px;
+    float: left;
+    margin-left: 10px;
+    margin-top: 9px;
+}
+
+
+
+input.editableValue{
+    width: 28px;
+    outline: none;
+    outline-width: 0;
+    border: 1px solid black;
+    padding: 1px;
+    font-size: 11px;
+}
+
+.ui-slider-handle{
+    font-size: 8px;
+    line-height: 8px;
+    outline: 0;
+}
+
+.clearLeft{
+    clear: left;
+}
+
+.clearRight{
+    clear: right;
+}
+
+.clearBoth{
+    clear: both;
+}
+
+.layerLeft{
+    height: 50px;
+    width: 25px;
+    float: left;
+    background-color: #666666;
+}
+
+.layerRight{
+
+}
+
+.layerLeft input{
+    margin-top: 10px;
+}
+
+a.layerDeleter{
+    display: block;
+    margin: auto;
+    margin-left: 6px;
+    color: white;
+    font-weight: bold;
+}
+
+a.layerDeleter:hover{
+    color: red;
+    cursor: pointer;
+}
+
+.frameLeft{
+    height: 50px;
+    width: 25px;
+    float: left;
+    background-color: #666666;
+}
+
+.frameRight{
+}
+
+.frameRight a{
+    padding: 5px;
+    display: block;
+    height: 40px;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.frameRight a.activeFrame{
+    background-color: #000077;
+    color: white;
+    font-weight: bold;
+}
+
+.frameRight a.activeFrame:hover{
+    background-color: #000077;
+    color: white;
+    font-weight: bold;
+}
+
+.activeFrame .frameThumbnailContainer{
+    border: 1px solid white;
+}
+
+.frameRight a:hover{
+    background-color: yellow;
+}
+
+a.frameDeleter{
+    display: block;
+    margin: auto;
+    margin-left: 6px;
+    margin-top: 15px;
+    color: white;
+    font-weight: bold;
+}
+
+a.frameDeleter:hover{
+    color: red;
+    cursor: pointer;
+}
+
+
+
+#manualBackgroundLayer .layerLeft, #autoBackgroundLayer .layerLeft{
+    background-color: #444;
+}
+
+#resourceInfoBox{
+    background-color: white;
+    border: 1px solid black;
+    padding: 4px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 10000;
+}
+
+#resourceInfoBox p{
+    font-size: 11px;
+}
+
+#layerToolsList, #layerToolsList li{
+    display: block;
+}
+
+.resourceDeleter{
+    margin-right: 10px;
+    margin-top: 5px;
+    color: white;
+}
+
+.resourceDeleter a{
+    display: block;
+    color: white;
+    font-weight: bold;
+}
+
+.resourceDeleter a:hover{
+    color: red;
+    cursor: pointer;
+}
+
+#resourceLoader{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("img/pixel.png");
+    z-index: 100;
+}
+
+#resourceLoaderContent{
+    color: #FFFFFF;
+    position: absolute;
+    top: 45%;
+    text-align: center;
+    background-color: black;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    width: 100%;
+}
+
+#confirmButtons{
+    text-align: right;
+}
+
+#toolbarArea{
+    top: 30px;
+    left: 0;
+    position: fixed;
+    width: 100%;
+    z-index: -1;
+    background-color: transparent;
+    /*Heigh defined in the javascript file because for resizing purposes*/
+    height: 0px;
+}
+
+.trackName{
+    white-space:nowrap;
+}
+
+.frameData{
+    font-size: 11px;
+    color: white;
+    padding-top: 5px;
+    padding-left: 10px;
+}
+
+button::-moz-focus-inner{
+    border:0;
+    padding:0
+}
+
+.layerTimelineButton{
+    margin-top: 5px;
+    padding: 0;
+    margin-left: 0;
+}
+
+.secondsTimeBar{
+    width: 2px;
+    height: 20%;
+    background-color: #FFFFFF;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+}
+
+.tenSecondsTimeBar{
+    width: 2px;
+    height: 40%;
+    background-color: #FFFFFF;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+}
+
+.numericTimeReference{
+    position: absolute;
+    z-index: 1;
+    top: 45%;
+    color: #FFFFFF;
+}
+
+#frameToolsButtons{
+    text-align: center;
+}
+
+#frameToolsButton button{
+    display: block;
+}
+
+#saveSelectChangesButton{
+    float: left;
+}
+
+#fileContainer{
+    width: 390px;
+    height: 390px;
+    margin: auto;
+    background-color: white;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 1px solid black;
+}
+
+#fileArea{
+    margin: auto;
+    width: 280px;
+    height: 280px;
+    border: 10px dashed;
+    border-color: #CCCCCC;
+    margin-top: 45px;
+}
+
+#openText{
+    text-align: center;
+    vertical-align: middle;
+    margin: auto;
+    margin-top: 130px;
+    width: 200px;
+    display: block;
+    font-size: 16px;
+    
+}
